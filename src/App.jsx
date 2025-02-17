@@ -8,6 +8,9 @@ import NavBar from './Components/NavBar';
 import Sidebar from './Components/Sidebar';
 import { Route, Routes } from 'react-router-dom';
 import DashBoard from './Pages/Admin/DashBoard'
+import AllAppointments from './Pages/Admin/AllAppointments'
+import AddDoctor from './Pages/Admin/AddDoctor'
+import DoctorsList from './Pages/Admin/DoctorsList'
 
 const App = () => {
   const {aToken} = useContext(AdminContext);
@@ -24,6 +27,9 @@ const App = () => {
               <Routes>
                 <Route path='/' element = {<> </>}/>
                 <Route path='/admin-dashboard' element = {<DashBoard/>}/>
+                <Route path='/all-appointments' element = {<AllAppointments/>}/>
+                <Route path='/add-doctor' element = {<AddDoctor/>}/>
+                <Route path='/doctors-list' element = {<DoctorsList/>}/>
               </Routes>
             </div>
             
