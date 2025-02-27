@@ -69,7 +69,7 @@ const DashBoard = () => {
         ) : (
           <button
             onClick={() => cancelAppointment(item._id)}
-            className="flex items-center justify-center bg-red-500 hover:bg-red-600 text-white w-10 h-10 rounded-full transition"
+            className="flex items-center justify-center   text-white w-10 h-10 rounded-full transition"
           >
             <img src={assets.cancel_icon} alt="Cancel" className="w-6 h-6" />
           </button>

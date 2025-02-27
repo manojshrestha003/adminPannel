@@ -16,10 +16,10 @@ const AllAppointments = () => {
       <p className="text-xl font-semibold text-gray-700 mb-4">All Appointments</p>
 
       <div className="overflow-x-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-7 bg-gray-100 text-gray-700 font-semibold p-3 rounded-md">
-          <p className="text-center">SN</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 bg-gray-100 text-gray-700 font-semibold p-3 rounded-md">
+          <p className="text-center">#</p>
           <p className="text-center">Patient Name</p>
-          <p className="text-center">Age</p>
+        
           <p className="text-center">Date & Time</p>
           <p className="text-center">Doctor Name</p>
           <p className="text-center">Fees</p>
@@ -31,7 +31,7 @@ const AllAppointments = () => {
           appointments.map((item, index) => (
             <div
               key={index}
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-7 items-center text-gray-600 border-b border-gray-200 p-3"
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 items-center text-gray-600 border-b border-gray-200 p-3"
             >
               {/* Serial Number */}
               <p className="text-center">{index + 1}</p>
@@ -46,8 +46,8 @@ const AllAppointments = () => {
                 <p className="text-sm">{item.userData.name}</p>
               </div>
 
-              {/* Age */}
-              <p className="text-center">{(dob)=>calculateAge(item.userData.dob)}</p>
+              
+            
 
               {/* Date & Time */}
               <p className="text-center text-sm">
