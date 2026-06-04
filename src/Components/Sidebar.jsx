@@ -6,7 +6,7 @@ import { assets } from '../assets/assets';
 const Sidebar = () => {
   const { aToken } = useContext(AdminContext);
   return (
-    <div className="w-64 h-screen bg-gray-800 text-white p-4">
+    <div className="w-64 bg-gray-800 text-white p-4 fixed top-[60px] left-0 z-50 overflow-y-auto h-[calc(100vh-60px)]">
       {aToken && (
         <ul className="space-y-4">
           <NavLink
