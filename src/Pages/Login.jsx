@@ -7,45 +7,45 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [state, setState] = useState("Admin");
-  const [email , setEmail] = useState("");
-  const [password, setPassword ] = useState("")
-  const  {setaToken, backendUrl } = useContext(AdminContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("")
+  const { setaToken, backendUrl } = useContext(AdminContext);
   const navigate = useNavigate();
 
-  const onSubmitHandler = async(e) =>{
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
 
     try {
-        if(state ==="Admin"){
-              const {data} = await axios.post(backendUrl+"/api/admin/login", {email, password})
-              if(data.success){
-                localStorage.setItem("aToken", data.token)
-                setaToken(data.token)
-                navigate('/admin-dashboard')
-              }else{
-                toast.error(data.message)
-              }
-
-        } else{
-           
+      if (state === "Admin") {
+        const { data } = await axios.post(backendUrl + "/api/admin/login", { email, password })
+        if (data.success) {
+          localStorage.setItem("aToken", data.token)
+          setaToken(data.token)
+          navigate('/admin-dashboard')
+        } else {
+          toast.error(data.message)
         }
-        
+
+      } else {
+
+      }
+
     } catch (error) {
-        
+
     }
 
   }
 
 
   return (
-    <form  onSubmit={onSubmitHandler}  action="" className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
+    <form onSubmit={onSubmitHandler} action="" className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
       <div className="bg-white shadow-lg rounded-lg p-6 sm:p-8 md:p-10 lg:p-12 w-full max-w-md">
         <p className="text-xl sm:text-2xl font-semibold text-gray-800 text-center mb-6">
           <span className="text-blue-600">{state}</span> Login
         </p>
         <div className="mb-4">
           <p className="block text-gray-700 font-medium mb-1">Email</p>
-          <input   onChange={(e)=>{setEmail(e.target.value)}}  value = {email}
+          <input onChange={(e) => { setEmail(e.target.value) }} value={email}
             type="email"
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
@@ -53,7 +53,7 @@ const Login = () => {
         </div>
         <div className="mb-6">
           <p className="block text-gray-700 font-medium mb-1">Password</p>
-          <input   onChange={(e)=>{setPassword(e.target.value)}}  value = {password}
+          <input onChange={(e) => { setPassword(e.target.value) }} value={password}
             type="password"
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
@@ -65,9 +65,20 @@ const Login = () => {
           Login
         </button>
         {
-            state==="Admin"?
-            <p>Doctor Login <span onClick={()=>{setState("Doctor")}}>Click here </span></p>:<p>Admin Login <span onClick={()=>{setState("Admin")}}>Click here </span></p>
+          state === "Admin" ?
+            <p>Doctor Login <span onClick={() => { setState("Doctor") }}>Click here </span></p> : <p>Admin Login <span onClick={() => { setState("Admin") }}>Click here </span></p>
         }
+
+        {/* Demo Credentials Hint */}
+        <div className="mt-6 p-3 bg-blue-50 border border-blue-200 rounded-lg text-center">
+          <p className="text-xs text-blue-600 font-semibold uppercase tracking-wider mb-1">Demo Credentials</p>
+          <p className="text-sm text-gray-700">
+            <span className="font-medium">Email:</span> admin@manoj.com
+          </p>
+          <p className="text-sm text-gray-700">
+            <span className="font-medium">Password:</span> admin@123
+          </p>
+        </div>
       </div>
     </form>
   );
